@@ -15,20 +15,20 @@ interface State {
   selectedOptions: string[]
 }
 
-
 class StMuiMultiselect extends StreamlitComponentBase<State> {
   public state = { selectedOptions: [] }
 
+  /** Method for rendering the component */
   public render = (): ReactNode => {
+    const options: string[] = this.props.args["options"]
+    const checkered: string[] = this.state.selectedOptions
+
     const vMargin = 200
-    const hMargin = 25
+    const hMargin = 10
     const StyledSelect = styled(Select)({
       margin: `${vMargin}px ${hMargin}px`,
       width: this.props.width - hMargin * 2
     });
-
-    const options: string[] = this.props.args["options"]
-    const checkered: string[] = this.state.selectedOptions
 
     return (
       <span>
@@ -53,8 +53,8 @@ class StMuiMultiselect extends StreamlitComponentBase<State> {
     )
   }
 
+  /** Called when user selects items. Update JS State as well as streamlit component state  */
   private onChange = (event: any): void => {
-    console.log(event.target.value)
     this.setState(
         prevState => ({ selectedOptions: event.target.value }),
         () => Streamlit.setComponentValue(this.state.selectedOptions)
