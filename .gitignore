@@ -1,0 +1,40 @@
+__pycache__/
+.pytest_cache/
+.idea/
+.venv/
+venv/
+.vscode/
+.doit.db.db
+.ipynb_checkpoints
+
+# JS stuff
+node_modules/
+
+# Make sure no db is uploaded
+**.db
+
+.cache/
+coverage/
+dist/*
+!dist/index.html
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# Vi
+*.swp
+*.swo
