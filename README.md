@@ -3,14 +3,14 @@
 ### Setup:
 ```
 $ poetry install
-$ cd my_component/frontend
+$ cd st_mui_multiselect/frontend
 $ npm install
 ```
 
 ### Run dev:  
 You need to run *both* npm dev server for the JS component frontend as well as streamlit
 ```
-$ cd my_component/frontend
+$ cd st_mui_multiselect/frontend
 $ npm run start
 ```
 ```

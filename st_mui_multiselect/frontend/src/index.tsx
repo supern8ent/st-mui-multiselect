@@ -1,10 +1,10 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import MyComponent from "./MyComponent"
+import StMuiMultiselect from "./StMuiMultiselect"
 
 ReactDOM.render(
   <React.StrictMode>
-    <MyComponent />
+    <StMuiMultiselect />
   </React.StrictMode>,
   document.getElementById("root")
 )

@@ -16,7 +16,7 @@ interface State {
 }
 
 
-class MyComponent extends StreamlitComponentBase<State> {
+class StMuiMultiselect extends StreamlitComponentBase<State> {
   public state = { selectedOptions: [] }
 
   public render = (): ReactNode => {
@@ -62,4 +62,4 @@ class MyComponent extends StreamlitComponentBase<State> {
   }
 }
 
-export default withStreamlitConnection(MyComponent)
+export default withStreamlitConnection(StMuiMultiselect)
