@@ -40,7 +40,7 @@ class StMuiMultiselect extends StreamlitComponentBase<State> {
           onChange={this.onChange}
           input={<Input />}
           renderValue={(selected: any) => (selected as string[]).join(', ')}
-          //MenuProps={MenuProps}
+          disabled={this.props.disabled}
         >
           {options.map((option: string) => (
             <MenuItem key={option} value={option}>
