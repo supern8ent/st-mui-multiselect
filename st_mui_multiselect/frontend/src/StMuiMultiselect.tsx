@@ -5,10 +5,6 @@ import {
 } from "streamlit-component-lib"
 import React, { ReactNode } from "react"
 import Select from '@material-ui/core/Select';
-import Input from '@material-ui/core/Input';
-import MenuItem from '@material-ui/core/MenuItem';
-import Checkbox from '@material-ui/core/Checkbox';
-import ListItemText from '@material-ui/core/ListItemText';
 import {styled} from "@material-ui/core/styles";
 
 interface State {
@@ -21,9 +17,8 @@ class StMuiMultiselect extends StreamlitComponentBase<State> {
   /** Method for rendering the component */
   public render = (): ReactNode => {
     const options: string[] = this.props.args["options"]
-    const checkered: string[] = this.state.selectedOptions
 
-    const vMargin = 200
+    const vMargin = 10
     const hMargin = 10
     const StyledSelect = styled(Select)({
       margin: `${vMargin}px ${hMargin}px`,
@@ -36,17 +31,19 @@ class StMuiMultiselect extends StreamlitComponentBase<State> {
           labelId="demo-mutiple-checkbox-label"
           id="demo-mutiple-checkbox"
           multiple
+          native
           value={this.state.selectedOptions}
           onChange={this.onChange}
-          input={<Input />}
-          renderValue={(selected: any) => (selected as string[]).join(', ')}
+          inputProps={{
+            id: 'select-multiple-native',
+          }}
+          //SelectDisplayProps={{ style: { paddingTop: 10, paddingBottom: 8 } }}
           disabled={this.props.disabled}
         >
-          {options.map((option: string) => (
-            <MenuItem key={option} value={option}>
-              <Checkbox checked={checkered.includes(option)} />
-              <ListItemText primary={option} />
-            </MenuItem>
+          {options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
           ))}
         </StyledSelect>
       </span>
@@ -55,8 +52,15 @@ class StMuiMultiselect extends StreamlitComponentBase<State> {
 
   /** Called when user selects items. Update JS State as well as streamlit component state  */
   private onChange = (event: any): void => {
+    const { options } = event.target as HTMLSelectElement;
+    const value: string[] = [];
+    for (let i = 0, l = options.length; i < l; i += 1) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
     this.setState(
-        prevState => ({ selectedOptions: event.target.value }),
+        prevState => ({ selectedOptions: value }),
         () => Streamlit.setComponentValue(this.state.selectedOptions)
     )
   }
