@@ -23,6 +23,8 @@ def st_mui_multiselect(options, size=4, key=None):
     ----------
     options: Iterable[str]
         The options to display in the multiselect
+    size: int
+        Set the size of the multiselect tool
     key: str or None
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
