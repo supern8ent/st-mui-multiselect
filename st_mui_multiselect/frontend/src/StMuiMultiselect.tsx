@@ -5,7 +5,6 @@ import {
 } from "streamlit-component-lib"
 import React, { ReactNode } from "react"
 import Select from '@material-ui/core/Select';
-import {styled} from "@material-ui/core/styles";
 
 interface State {
   selectedOptions: string[]
@@ -18,35 +17,26 @@ class StMuiMultiselect extends StreamlitComponentBase<State> {
   public render = (): ReactNode => {
     const options: string[] = this.props.args["options"]
 
-    const vMargin = 10
-    const hMargin = 10
-    const StyledSelect = styled(Select)({
-      margin: `${vMargin}px ${hMargin}px`,
-      width: this.props.width - hMargin * 2
-    });
-
     return (
-      <span>
-        <StyledSelect
-          labelId="demo-mutiple-checkbox-label"
-          id="demo-mutiple-checkbox"
-          multiple
-          native
-          value={this.state.selectedOptions}
-          onChange={this.onChange}
-          inputProps={{
-            id: 'select-multiple-native',
-          }}
-          //SelectDisplayProps={{ style: { paddingTop: 10, paddingBottom: 8 } }}
-          disabled={this.props.disabled}
-        >
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </StyledSelect>
-      </span>
+      <Select
+        labelId="demo-mutiple-checkbox-label"
+        id="demo-mutiple-checkbox"
+        multiple
+        native
+        value={this.state.selectedOptions}
+        onChange={this.onChange}
+        inputProps={{
+          id: 'select-multiple-native',
+          size: this.props.args["size"]
+        }}
+        disabled={this.props.disabled}
+      >
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </Select>
     )
   }
 

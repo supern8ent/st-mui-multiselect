@@ -16,7 +16,7 @@ else:
     _component_func = components.declare_component("st_mui_multiselect", path=build_dir)
 
 
-def st_mui_multiselect(options, key=None):
+def st_mui_multiselect(options, size=4, key=None):
     """Create a new instance of "st_mui_multiselect".
 
     Parameters
@@ -33,6 +33,6 @@ def st_mui_multiselect(options, key=None):
     List[str]
         The options that the user has selected
     """
-    component_value = _component_func(options=options, key=key, default=[])
+    component_value = _component_func(options=options, size=size, key=key, default=[])
 
     return component_value
