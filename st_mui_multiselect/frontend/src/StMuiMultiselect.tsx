@@ -17,10 +17,20 @@ class StMuiMultiselect extends StreamlitComponentBase<State> {
   public render = (): ReactNode => {
     const options: string[] = this.props.args["options"]
 
+    const { theme } = this.props
+    const style: React.CSSProperties = {}
+
+    if (theme) {
+      if (theme.base === "dark") {
+        style.color = "#FAFAFA"
+      }
+    }
+
     return (
       <Select
         labelId="demo-mutiple-checkbox-label"
         id="demo-mutiple-checkbox"
+        style={style}
         multiple
         native
         value={this.state.selectedOptions}

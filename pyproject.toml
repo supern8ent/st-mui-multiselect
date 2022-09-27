@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "st-mui-multiselect"
-version = "0.1.2"
+version = "0.1.3"
 description = "Multiselect component for Streamlit using Material UI's tool"
 authors = ["Nathan Lloyd <nat272@gmail.com>"]
 repository = "https://github.com/supern8ent/st-mui-multiselect"
